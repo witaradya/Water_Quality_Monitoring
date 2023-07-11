@@ -9,8 +9,8 @@
 #include <WiFiClient.h>
 #include <BlynkSimpleEsp32.h>
 
-#define SSID     "rajaaa"
-#define PASSWORD "18091998"
+#define SSID     "monitorAir"
+#define PASSWORD "12341234"
 
 BlynkTimer timer;
 
@@ -37,23 +37,18 @@ void loop() {
   Blynk.run();
   timer.run();
 
-  if (Serial2.available() > 7) {
-    for (int a = 0; a < 8; a++) {
+  if (Serial2.available() > 6) {
+    for (int a = 0; a < 7; a++) {
       dataInput[a] = Serial2.read();
-      Serial.print(dataInput[a]);
-      Serial.print("\t");
+      // Serial.print(dataInput[a]);
+      // Serial.print("\t");
     }
-    Serial.println();
-    byte sumAll;
-    for (int b = 1; b < 7; b++) {
-      sumAll += dataInput[b];
-    }
-    checkSum = 0 - sumAll;
+    // Serial.println();
     
-    if (dataInput[0] == 101 && dataInput[7] == checkSum) {
+    if (dataInput[0] == 101){
       phValue = ((dataInput[1] << 8) + dataInput[2]) / 100.0;
-      tdsValue = ((dataInput[3] << 8) + dataInput[4]) / 100.0;
-      turbidityValue = ((dataInput[5] << 8) + dataInput[6]) / 100.0;
+      tdsValue = ((dataInput[3] << 8) + dataInput[4]);
+      turbidityValue = ((dataInput[5] << 8) + dataInput[6]);
     }
     // Serial.print(phValue);
     // Serial.print("\t");

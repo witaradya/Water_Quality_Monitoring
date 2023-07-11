@@ -1,27 +1,27 @@
-void LCD_openingScreen(){
+void LCD_openingScreen(){ 
   lcd.init();
   lcd.backlight();
   lcd.setCursor(0, 0);
   lcd.print("MONITORING");
-  lcd.setCursor(1, 2);
+  lcd.setCursor(2, 1);
   lcd.print("KUALITAS AIR");
-  delay(5000);
+  delay(4000);
 }
 
 void LCD_loop(){
   lcd.clear();
-  lcd.setCursor(0, 3);
+  lcd.setCursor(4, 0);
   lcd.print("pH ");
-  lcd.setCursor(0, 6);
+  lcd.setCursor(7, 0);
   lcd.print(pHvalue);
   
-  lcd.setCursor(1, 1);
-  lcd.print((int)tdsValue);
-  lcd.setCursor(1, 4);
+  lcd.setCursor(0, 1);
+  lcd.print(tdsValue, 0);
+  lcd.setCursor(4, 1);
   lcd.print("ppm");
 
-  lcd.setCursor(1, 8);
-  lcd.print((int)ntuTurbidity);
-  lcd.setCursor(1, 11);
+  lcd.setCursor(8, 1);
+  lcd.print(ntuTurbidity, 0);
+  lcd.setCursor(13, 1);
   lcd.print("NTU");
 }
