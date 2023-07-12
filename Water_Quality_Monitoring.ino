@@ -20,7 +20,7 @@ byte checkSum;
 float voltTurbidity = 0.0, ntuTurbidity = 0.0;
 float temperature = 25.5, tdsValue = 0.0;
 
-float calibration_value = 21.34 - 0.7;
+float calibration_value = 21.34 - 1.3;
 int phval = 0; 
 unsigned long int avgval; 
 int buffer_arr[10],temp;

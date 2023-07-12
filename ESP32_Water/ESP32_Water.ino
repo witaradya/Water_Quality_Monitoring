@@ -15,8 +15,12 @@
 BlynkTimer timer;
 
 float phValue = 0.0, tdsValue = 0.0, turbidityValue = 0.0;
+float prevPH = 0.0, prevTDS = 0.0, prevTUR = 0.0;
 byte dataInput[8];
 byte checkSum;
+
+unsigned long int myTimer = 0;
+unsigned int countPH = 0, countTDS = 0, countTUR = 0;
 
 void myTimerEvent()
 {
@@ -56,4 +60,36 @@ void loop() {
     // Serial.print("\t");
     // Serial.println(turbidityValue);
   }
+
+  if((millis() - myTimer) > 2000){
+    if((prevPH > 9.0) || (prevPH < 4.0)) countPH++;
+    if(prevTDS > 500.0) countTDS++;
+    if(prevTUR > 2300.0) countTUR++;
+
+    if((phValue > 9.0) || (phValue < 4.0)) countPH++;
+    else countPH = 0;
+    if(tdsValue > 500.0) countTDS++;
+    else countTDS = 0;
+    if(turbidityValue > 2300.0) countTUR++;
+    else countTUR = 0;
+
+    prevPH = phValue;
+    prevTDS = tdsValue;
+    prevTUR = turbidityValue;
+
+    if(countPH >= 2){
+      // Send notif to telegram
+      countPH = 0;
+    }
+    if(countTDS >= 2){
+      // Send notif to telegram
+      countTDS = 0;
+    }
+    if(countTUR >= 2){
+      // Send notif to telegram
+      countTUR = 0;
+    }
+    myTimer = millis();
+  }
+
 }
