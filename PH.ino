@@ -20,7 +20,7 @@ void PH_read() {
   for (int k = 2; k < 8; k++) avgval += buffer_arr[k];
   float volt = (float)avgval * 5.0 / 1024.0 / 6.0;
   pHvalue = -5.70 * volt + calibration_value;
-
+  if(pHvalue > 8.0) pHvalue += 0.3;
   Serial.print("pH Value : ");
   Serial.println(pHvalue);
 }

@@ -14,13 +14,13 @@ SoftwareSerial mySerial (PIN_RX, PIN_TX);
 LiquidCrystal_I2C lcd(0x3F, 16, 2);
 GravityTDS gravityTds;
 
-byte sendData[7];
+byte sendData[8];
 byte checkSum;
 
 float voltTurbidity = 0.0, ntuTurbidity = 0.0;
 float temperature = 25.5, tdsValue = 0.0;
 
-float calibration_value = 21.34 - 1.3;
+float calibration_value = 22.2;
 int phval = 0; 
 unsigned long int avgval; 
 int buffer_arr[10],temp;

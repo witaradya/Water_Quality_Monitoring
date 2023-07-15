@@ -9,7 +9,9 @@ void TURBIDITY_read(){
   voltTurbidity = voltTurbidity / 800.0;
 
   if(voltTurbidity < 2.50) ntuTurbidity = 3000.00;
-  else ntuTurbidity = (-1120.4 * square(voltTurbidity)) + (5742.3 * voltTurbidity) - (4353.8); 
+  else ntuTurbidity = (-1120.4 * square(voltTurbidity)) + (5742.3 * voltTurbidity) - (4353.8);
+
+  ntuTurbidity /= 100.0;
 
   Serial.print("Turbidity Value : ");
   Serial.print(ntuTurbidity);
