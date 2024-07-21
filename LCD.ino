@@ -1,3 +1,6 @@
+/*
+ * Menampilkan ke LCD pada saat alat pertama nyala
+ */
 void LCD_openingScreen(){ 
   lcd.init();
   lcd.backlight();
@@ -6,8 +9,17 @@ void LCD_openingScreen(){
   lcd.setCursor(2, 1);
   lcd.print("KUALITAS AIR");
   delay(4000);
+  lcd.setCursor(0, 0);
+  lcd.print("ALDI BUDIAWAN");
+  lcd.setCursor(2, 1);
+  lcd.print("201952043");
+  delay(4000);  
 }
 
+
+/*
+ * Menampikan nilai sensor setiap saat
+ */
 void LCD_loop(){
   lcd.clear();
   lcd.setCursor(4, 0);

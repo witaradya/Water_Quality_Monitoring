@@ -1,6 +1,8 @@
 /*
  * Reference
  * https://how2electronics.com/diy-turbidity-meter-using-turbidity-sensor-arduino/
+ * 
+ * Membaca data sensor Turbidity
  */
 void TURBIDITY_read(){
   for(int a = 0; a < 800; a++){
@@ -8,8 +10,8 @@ void TURBIDITY_read(){
   }
   voltTurbidity = voltTurbidity / 800.0;
 
-  if(voltTurbidity < 2.50) ntuTurbidity = 3000.00;
-  else ntuTurbidity = (-1120.4 * square(voltTurbidity)) + (5742.3 * voltTurbidity) - (4353.8);
+  if(voltTurbidity < 2.50) ntuTurbidity = 3000.00;  // Membatasi nilai TDS di angka 30
+  else ntuTurbidity = (-1120.4 * square(voltTurbidity)) + (5742.3 * voltTurbidity) - (4353.8); // Menghitung nilai turbidity
 
   ntuTurbidity /= 100.0;
 

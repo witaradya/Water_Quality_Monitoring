@@ -11,6 +11,7 @@ void TDS_init(){
   gravityTds.begin();
 }
 
+// Membaca data sensor TDS
 void TDS_read(){
   gravityTds.setTemperature(temperature);
   gravityTds.update(); 

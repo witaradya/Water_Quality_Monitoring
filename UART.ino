@@ -1,3 +1,7 @@
+/*
+ * Mengirim data semua sensor ke esp32
+ */
+
 void UART_sendData(){
   byte sumData;
   sendData[0] = 0xAA;
